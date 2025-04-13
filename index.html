@@ -1,8 +1,51 @@
-<html>
-	<head>
-		<title>test</title>
-	</head>
-	<body>
-		test
-	</body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/assets/favicon-BKxRFt2-.ico">
+    <title>BritishNationalGrid.uk</title>
+    <script type="module" crossorigin src="/assets/index-DmMwXudA.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-l9hbH2WU.css">
+  </head>
+  <body>
+    <div id="donate-button-container">
+      <div id="donate-button"></div>
+      <script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8"></script>
+      <script>
+      PayPal.Donation.Button({
+      env:'production',
+      hosted_button_id:'R4DGZPN9BNRH6',
+      image: {
+      src:'https://www.paypalobjects.com/en_GB/i/btn/btn_donate_LG.gif',
+      alt:'Donate with PayPal button',
+      title:'PayPal - The safer, easier way to pay online!',
+      }
+      }).render('#donate-button');
+      </script>
+    </div>        
+    <div id="infoBalloon" data-bind="visible: visible">
+      <form>
+          <fieldset>
+              <legend>Grid Reference</legend>
+              <input data-bind="value: gridReference.value, click: selectAll" tabindex="1"/>
+              <div id="figureButtons" data-bind="with: gridReference">
+                  <input type="button" class="left" value="◀" data-bind="click: decreaseFigure, disable: isAtMinPrecision" tabindex="1.1"/>
+                  <div id="figureCount"><span data-bind="html: precisionText">six&#8209;figure</span></div>
+                  <input type="button" class="right" value="▶" data-bind="click: increaseFigure, disable: isAtMaxPrecision" tabindex="1.2"/>
+              </div>
+          </fieldset>
+          <fieldset>
+              <legend>X &amp;Y</legend>
+              <input data-bind="value: eastingNorthingNoLetter, click: selectAll"  tabindex="3"/>
+          </fieldset>
+          <fieldset>
+              <legend>Lat/Lon</legend>
+              <input data-bind="value: wgs84, click: selectAll" tabindex="4"/>
+              <input data-bind="value: hdms, click: selectAll"  tabindex="5"/>
+          </fieldset>
+      </form>
+    </div>
+    <div id="map"></div>
+  </body>
 </html>
